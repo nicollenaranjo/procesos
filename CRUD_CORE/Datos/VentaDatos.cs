@@ -108,5 +108,33 @@ namespace CRUD_CORE.Datos
             }
             return rpta;
         }
+
+        public bool Editar(VentaModel oventa)
+        {
+            bool rpta;
+            try
+            {
+
+                var cn = new Conexion();
+                using (var conexion = new SqlConnection(cn.getCadenaSQL()))
+                {
+                    conexion.Open();
+                    SqlCommand cmd = new SqlCommand("sp_Editar1", conexion);
+                    cmd.Parameters.AddWithValue("idVenta", oventa.idVenta);
+                    cmd.Parameters.AddWithValue("Nombre", oventa.Nombre);
+                    cmd.Parameters.AddWithValue("Precio", oventa.Precio);
+                    cmd.Parameters.AddWithValue("DiaVenta", oventa.DiaVenta);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.ExecuteNonQuery();
+                }
+                rpta = true;
+            }
+            catch (Exception e)
+            {
+                string errro = e.Message;
+                rpta = false;
+            }
+            return rpta;
+        }
     }
 }

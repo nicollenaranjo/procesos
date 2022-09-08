@@ -54,5 +54,22 @@ namespace CRUD_CORE.Controllers
                 return View();
         
         }
+        public IActionResult Editar(int idVenta)
+        {
+            var oventa = _VentaDatos.Obtener(idVenta);
+            return View(oventa);
+        }
+
+
+        [HttpPost]
+        public IActionResult Editar(VentaModel oVenta)
+        {
+            var rpt = _VentaDatos.Editar(oVenta);
+            if (rpt)
+                return RedirectToAction("Listar");
+            else
+                return View();
+
+        }
     }
 }
