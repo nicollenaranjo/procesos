@@ -14,14 +14,17 @@
       <div class="mb-3">
         <label class="form-label">Nombre</label>
         <input asp-for = "Nombre" type="text" class="form-control">
+        <span asp-validation-for="Nombre" class="text-danger"></span>
       </div>
       <div class="mb-3">
         <label class="form-label">Precio</label>
         <input asp-for = "Precio" type="text" class="form-control">
+        <span asp-validation-for="Precio" class="text-danger"></span>
       </div>
       <div class="mb-3">
         <label class="form-label">Dia de la venta</label>
         <input asp-for = "DiaVenta" type="text" class="form-control">
+        <span asp-validation-for="DiaVenta" class="text-danger"></span>
       </div>
 
       <button type="submit" class="btn btn-primary">Guardar</button>

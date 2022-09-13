@@ -79,7 +79,7 @@ namespace CRUD_CORE.Datos
             }
             catch (Exception e)
             {
-                string errro = e.Message;
+                string error = e.Message;
                 rpta = false;
             }
             return rpta;
@@ -103,7 +103,7 @@ namespace CRUD_CORE.Datos
             }
             catch (Exception e)
             {
-                string errro = e.Message;
+                string error = e.Message;
                 rpta = false;
             }
             return rpta;
@@ -131,7 +131,7 @@ namespace CRUD_CORE.Datos
             }
             catch (Exception e)
             {
-                string errro = e.Message;
+                string error = e.Message;
                 rpta = false;
             }
             return rpta;

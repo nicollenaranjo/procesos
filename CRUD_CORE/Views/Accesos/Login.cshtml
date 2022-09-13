@@ -1,4 +1,4 @@
-﻿
+﻿@model Usuario
 @{
     Layout = null;
 }
@@ -17,17 +17,25 @@
               <h1 class="display-3" >
                 Login
             </h1>
-            <form action="@Url.Action("Login", "Accesos")" method="post">
+            <form asp-action = "Login" asp-controller="Accesos" method="post">
               <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">Id</label>
-                <input type="text" name = "Nombre" class="form-control">
+                <input asp-for = "Nombre" type="text" class="form-control">
+                <span asp-validation-for="Nombre" class="text-danger"></span>
               </div>
               <div class="mb-3">
 
                 <label for="exampleInputPassword1" class="form-label">Contraseña</label>
                 <input type="password" name = "Clave" class="form-control">
+                <span asp-validation-for="Clave" class="text-danger"></span>
               </div>
-              <button type="submit" class="btn btn-primary">ingresar</button>
+                @if (ViewData["Mensaje"] != null)
+                {
+                    <div class="alert alert-danger" role="alert">
+                        @ViewData["Mensaje"]
+                    </div>
+                }
+                <button type="submit" class="btn btn-primary">ingresar</button>
               <a href="@Url.Action("Registro", "Accesos" )">Registrate</a>
             </form>
         </div>

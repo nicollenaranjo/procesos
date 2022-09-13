@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Collections;
 
 
 namespace CRUD_CORE.Controllers
@@ -24,72 +25,90 @@ namespace CRUD_CORE.Controllers
         [HttpPost]
         public ActionResult Registro(Usuario oUsuario)
         {
+            bool rpta;
             bool registrado;
             string? mensaje;
+            try
+            {
+                if (oUsuario.Clave == oUsuario.ConfirmarClave)
+                {
+                    oUsuario.Clave = oUsuario.Clave;
+                }
+                else
+                {
+                    ViewData["Mensaje"] = "Las contraseñas no coinciden";
+                    return View();
+                }
 
-            if (oUsuario.Clave == oUsuario.ConfirmarClave)
-            {
-                oUsuario.Clave = oUsuario.Clave;
-            }
-            else
-            {
-                ViewData["Mensaje"] = "Las contraseñas no coinciden";
-                return View();
-            }
+                using (SqlConnection cn = new SqlConnection(cadena))
+                {
+                    SqlCommand cmd = new SqlCommand("sp_RegistrarUsuario", cn);
+                    cmd.Parameters.AddWithValue("Nombre", oUsuario.Nombre);
+                    cmd.Parameters.AddWithValue("Correo", oUsuario.Correo);
+                    cmd.Parameters.AddWithValue("Clave", oUsuario.Clave);
+                    cmd.Parameters.Add("Registrado", SqlDbType.Bit).Direction = ParameterDirection.Output;
+                    cmd.Parameters.Add("Mensaje", SqlDbType.VarChar, 100).Direction = ParameterDirection.Output;
+                    cmd.CommandType = CommandType.StoredProcedure;
 
-            using (SqlConnection cn = new SqlConnection(cadena))
-            {
-                SqlCommand cmd = new SqlCommand("sp_RegistrarUsuario", cn);
-                cmd.Parameters.AddWithValue("Nombre", oUsuario.Nombre);
-                cmd.Parameters.AddWithValue("Correo", oUsuario.Correo);
-                cmd.Parameters.AddWithValue("Clave", oUsuario.Clave);
-                cmd.Parameters.Add("Registrado", SqlDbType.Bit).Direction = ParameterDirection.Output;
-                cmd.Parameters.Add("Mensaje", SqlDbType.VarChar,100).Direction = ParameterDirection.Output;
-                cmd.CommandType = CommandType.StoredProcedure;
+                    cn.Open();
+                    cmd.ExecuteNonQuery();
 
-                cn.Open();
-                cmd.ExecuteNonQuery();
-
-                registrado = Convert.ToBoolean(cmd.Parameters["Registrado"].Value);
-                mensaje = cmd.Parameters["Mensaje"].Value.ToString();
+                    registrado = Convert.ToBoolean(cmd.Parameters["Registrado"].Value);
+                    mensaje = cmd.Parameters["Mensaje"].Value.ToString();
+                }
+                ViewData["Mensaje"] = mensaje;
+                if (registrado)
+                {
+                    return RedirectToAction("Login", "Accesos");
+                }
+                else
+                {
+                    return View();
+                }
             }
-            ViewData["Mensaje"] = mensaje;
-            if (registrado)
+            catch (Exception e)
             {
-                return RedirectToAction("Login", "Accesos");
+                string error = e.Message;
+                rpta = false;
             }
-            else
-            {
-                return View();
-            }
+      
+            return View();
 
         }
         [HttpPost]
         public ActionResult Login(Usuario oUsuario)
         {
-            using (SqlConnection cn = new SqlConnection(cadena))
+            bool rpta;
+            try
             {
-                SqlCommand cmd = new SqlCommand("sp_ValidarUsuario_1", cn);
-                cmd.Parameters.AddWithValue("Nombre", oUsuario.Nombre);
-                cmd.Parameters.AddWithValue("Clave", oUsuario.Clave);
-                cmd.CommandType = CommandType.StoredProcedure;
+                using (SqlConnection cn = new SqlConnection(cadena))
+                {
+                    SqlCommand cmd = new SqlCommand("sp_ValidarUsuario_1", cn);
+                    cmd.Parameters.AddWithValue("Nombre", oUsuario.Nombre);
+                    cmd.Parameters.AddWithValue("Clave", oUsuario.Clave);
+                    cmd.CommandType = CommandType.StoredProcedure;
 
-                cn.Open();
-               oUsuario.idUsuario = Convert.ToInt32(cmd.ExecuteScalar().ToString());
+                    cn.Open();
+                    oUsuario.idUsuario = Convert.ToInt32(cmd.ExecuteScalar().ToString());
+                }
+                rpta = false;
+                if (oUsuario.idUsuario != 0)
+                {
+                    return RedirectToAction("Listar", "Mantenedor");
+                }
+                else
+                {
+                    ViewData["Mensaje"] = "Usuario no encontrado";
+                    return View();
+                }
+            }
+            catch (Exception e) {
+                string error = e.Message;
+                rpta = false;
             }
 
-            if (oUsuario.idUsuario != 0)
-            {
-                //Session["usuario"] = oUsuario;
-                return RedirectToAction("Listar", "Mantenedor");
-            }
-            else {
-                ViewData["Mensaje"] = "Usuario no encontrado";
-                return View();
-            }
 
-            
-
+            return View();
         }
     }
 }

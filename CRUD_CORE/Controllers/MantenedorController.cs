@@ -17,6 +17,7 @@ namespace CRUD_CORE.Controllers
         public IActionResult Guardar()
         {
             // Metodo solo devuelve la vista
+
             return View();
         }
         [HttpPost]
