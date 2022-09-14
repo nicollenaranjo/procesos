@@ -7,6 +7,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Collections;
+using System.Text;
+using System.Security.Cryptography;
 
 
 namespace CRUD_CORE.Controllers
@@ -14,6 +16,21 @@ namespace CRUD_CORE.Controllers
     public class AccesosController : Controller
     {
         static string cadena = "Data Source=DESKTOP-AT13GP0\\MSSQLSERVER_1; initial Catalog = DBCRUDCORE; Integrated Security = true";
+
+        public static string ConvertirClave(string txt) {
+
+            StringBuilder Sb = new StringBuilder();
+            using (SHA256 hash = SHA256.Create())
+            {
+                Encoding enc = Encoding.UTF8;
+                byte[] result = hash.ComputeHash(enc.GetBytes(txt));
+
+                foreach(byte b in result)
+                    Sb.Append(b.ToString("x2"));
+            
+            }
+            return Sb.ToString();
+        }
         public IActionResult Login()
         {
             return View();
@@ -32,7 +49,8 @@ namespace CRUD_CORE.Controllers
             {
                 if (oUsuario.Clave == oUsuario.ConfirmarClave)
                 {
-                    oUsuario.Clave = oUsuario.Clave;
+                    oUsuario.Clave = ConvertirClave(oUsuario.Clave);
+                    
                 }
                 else
                 {
@@ -85,7 +103,7 @@ namespace CRUD_CORE.Controllers
                 {
                     SqlCommand cmd = new SqlCommand("sp_ValidarUsuario_1", cn);
                     cmd.Parameters.AddWithValue("Nombre", oUsuario.Nombre);
-                    cmd.Parameters.AddWithValue("Clave", oUsuario.Clave);
+                    cmd.Parameters.AddWithValue("Clave", ConvertirClave(oUsuario.Clave));
                     cmd.CommandType = CommandType.StoredProcedure;
 
                     cn.Open();
