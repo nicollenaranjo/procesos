@@ -21,6 +21,6 @@ namespace CRUD_CORE.Models
         [Required(ErrorMessage = "El campo Confirmar contraseña es obligatorio")]
         public string? ConfirmarClave { get; set; }
        
-
     }
+    
 }

@@ -2,6 +2,7 @@
 
 using CRUD_CORE.Datos;
 using CRUD_CORE.Models;
+using Rotativa.AspNetCore;
 
 namespace CRUD_CORE.Controllers
 {
@@ -14,6 +15,11 @@ namespace CRUD_CORE.Controllers
             var oLista = _VentaDatos.Listar();
             return View(oLista);
         }
+        public IActionResult ListarDia() {
+            var oLista = _VentaDatos.ListarDia();
+            return View(oLista);
+        }
+
         public IActionResult Guardar()
         {
             // Metodo solo devuelve la vista

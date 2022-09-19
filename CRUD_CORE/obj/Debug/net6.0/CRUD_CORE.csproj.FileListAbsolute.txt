@@ -36,7 +36,6 @@ C:\Users\usuario\source\repos\CRUD_CORE\CRUD_CORE\bin\Debug\net6.0\MessagePack.d
 C:\Users\usuario\source\repos\CRUD_CORE\CRUD_CORE\bin\Debug\net6.0\MessagePack.Annotations.dll
 C:\Users\usuario\source\repos\CRUD_CORE\CRUD_CORE\bin\Debug\net6.0\Microsoft.AspNetCore.Razor.Language.dll
 C:\Users\usuario\source\repos\CRUD_CORE\CRUD_CORE\bin\Debug\net6.0\Microsoft.Bcl.AsyncInterfaces.dll
-C:\Users\usuario\source\repos\CRUD_CORE\CRUD_CORE\bin\Debug\net6.0\Microsoft.Build.Locator.dll
 C:\Users\usuario\source\repos\CRUD_CORE\CRUD_CORE\bin\Debug\net6.0\Microsoft.CodeAnalysis.AnalyzerUtilities.dll
 C:\Users\usuario\source\repos\CRUD_CORE\CRUD_CORE\bin\Debug\net6.0\Microsoft.CodeAnalysis.dll
 C:\Users\usuario\source\repos\CRUD_CORE\CRUD_CORE\bin\Debug\net6.0\Microsoft.CodeAnalysis.CSharp.dll
@@ -535,3 +534,18 @@ C:\Users\usuario\source\repos\CRUD_CORE\CRUD_CORE\bin\Debug\net6.0\Microsoft.Asp
 C:\Users\usuario\source\repos\CRUD_CORE\CRUD_CORE\bin\Debug\net6.0\Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation.dll
 C:\Users\usuario\source\repos\CRUD_CORE\CRUD_CORE\bin\Debug\net6.0\Microsoft.Extensions.DependencyModel.dll
 C:\Users\usuario\source\repos\CRUD_CORE\CRUD_CORE\obj\Debug\net6.0\CRUD_CORE.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\usuario\source\repos\CRUD_CORE\CRUD_CORE\bin\Debug\net6.0\System.Web.Mvc.dll
+C:\Users\usuario\source\repos\CRUD_CORE\CRUD_CORE\bin\Debug\net6.0\System.Web.Razor.dll
+C:\Users\usuario\source\repos\CRUD_CORE\CRUD_CORE\bin\Debug\net6.0\System.Web.Helpers.dll
+C:\Users\usuario\source\repos\CRUD_CORE\CRUD_CORE\bin\Debug\net6.0\System.Web.WebPages.Deployment.dll
+C:\Users\usuario\source\repos\CRUD_CORE\CRUD_CORE\bin\Debug\net6.0\System.Web.WebPages.Razor.dll
+C:\Users\usuario\source\repos\CRUD_CORE\CRUD_CORE\bin\Debug\net6.0\System.Web.WebPages.dll
+C:\Users\usuario\source\repos\CRUD_CORE\CRUD_CORE\bin\Debug\net6.0\Microsoft.AspNetCore.JsonPatch.dll
+C:\Users\usuario\source\repos\CRUD_CORE\CRUD_CORE\bin\Debug\net6.0\Microsoft.Web.Infrastructure.dll
+C:\Users\usuario\source\repos\CRUD_CORE\CRUD_CORE\bin\Debug\net6.0\Newtonsoft.Json.Bson.dll
+C:\Users\usuario\source\repos\CRUD_CORE\CRUD_CORE\bin\Debug\net6.0\Microsoft.Build.dll
+C:\Users\usuario\source\repos\CRUD_CORE\CRUD_CORE\bin\Debug\net6.0\Microsoft.Build.Framework.dll
+C:\Users\usuario\source\repos\CRUD_CORE\CRUD_CORE\bin\Debug\net6.0\Microsoft.NET.StringTools.dll
+C:\Users\usuario\source\repos\CRUD_CORE\CRUD_CORE\bin\Debug\net6.0\BouncyCastle.Crypto.dll
+C:\Users\usuario\source\repos\CRUD_CORE\CRUD_CORE\bin\Debug\net6.0\itextsharp.dll
+C:\Users\usuario\source\repos\CRUD_CORE\CRUD_CORE\bin\Debug\net6.0\Rotativa.AspNetCore.dll

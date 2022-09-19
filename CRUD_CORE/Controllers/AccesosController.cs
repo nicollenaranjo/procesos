@@ -11,6 +11,7 @@ using System.Text;
 using System.Security.Cryptography;
 
 
+
 namespace CRUD_CORE.Controllers
 {
     public class AccesosController : Controller
@@ -112,6 +113,7 @@ namespace CRUD_CORE.Controllers
                 rpta = false;
                 if (oUsuario.idUsuario != 0)
                 {
+                    
                     return RedirectToAction("Listar", "Mantenedor");
                 }
                 else

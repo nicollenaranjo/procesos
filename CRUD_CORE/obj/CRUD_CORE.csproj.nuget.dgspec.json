@@ -40,17 +40,33 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
+            "Microsoft.AspNet.Mvc": {
+              "target": "Package",
+              "version": "[5.2.9, )"
+            },
+            "Microsoft.AspNetCore.Mvc.Razor": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
             "Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation": {
               "target": "Package",
-              "version": "[6.0.8, )"
+              "version": "[6.0.7, )"
             },
             "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
               "target": "Package",
-              "version": "[6.0.8, )"
+              "version": "[6.0.9, )"
+            },
+            "Rotativa.AspNetCore": {
+              "target": "Package",
+              "version": "[1.2.0, )"
             },
             "System.Data.SqlClient": {
               "target": "Package",
               "version": "[4.8.3, )"
+            },
+            "iTextSharp": {
+              "target": "Package",
+              "version": "[5.5.13.3, )"
             }
           },
           "imports": [
