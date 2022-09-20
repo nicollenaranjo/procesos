@@ -3,9 +3,12 @@
 using CRUD_CORE.Datos;
 using CRUD_CORE.Models;
 using Rotativa.AspNetCore;
+using Microsoft.AspNetCore.Authorization;
+using CRUD_CORE.Permisos;
 
 namespace CRUD_CORE.Controllers
 {
+   // [Authorize]
     public class MantenedorController : Controller
     {
         VentaDatos _VentaDatos = new VentaDatos();
@@ -15,6 +18,7 @@ namespace CRUD_CORE.Controllers
             var oLista = _VentaDatos.Listar();
             return View(oLista);
         }
+        [PermisosRol(Roles.Administrador)]
         public IActionResult ListarDia() {
             var oLista = _VentaDatos.ListarDia();
             return View(oLista);

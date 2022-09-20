@@ -549,3 +549,7 @@ C:\Users\usuario\source\repos\CRUD_CORE\CRUD_CORE\bin\Debug\net6.0\Microsoft.NET
 C:\Users\usuario\source\repos\CRUD_CORE\CRUD_CORE\bin\Debug\net6.0\BouncyCastle.Crypto.dll
 C:\Users\usuario\source\repos\CRUD_CORE\CRUD_CORE\bin\Debug\net6.0\itextsharp.dll
 C:\Users\usuario\source\repos\CRUD_CORE\CRUD_CORE\bin\Debug\net6.0\Rotativa.AspNetCore.dll
+C:\Users\usuario\source\repos\CRUD_CORE\CRUD_CORE\bin\Debug\net6.0\Azure.Core.dll
+C:\Users\usuario\source\repos\CRUD_CORE\CRUD_CORE\bin\Debug\net6.0\System.Memory.Data.dll
+C:\Users\usuario\source\repos\CRUD_CORE\CRUD_CORE\bin\Debug\net6.0\Microsoft.AspNet.SessionState.SessionStateModule.dll
+C:\Users\usuario\source\repos\CRUD_CORE\CRUD_CORE\bin\Debug\net6.0\System.ServiceModel.dll

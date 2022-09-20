@@ -25,11 +25,16 @@
                         <td>@i.Nombre</td>
                         <td>@i.Precio</td>
                         <td>@i.DiaVenta?.ToString("MMMM/dd/yyyy")</td>
-                    </tr>
+                    <td>
+                      <!--
+                          <a onclick="btnGenerarPDF_Click" class="btn btn-danger btn-sm">Descarga</a>
+                      -->  
+                    </td>
+                   </tr>
                 }
             </tbody>
         </table>
-        
+        <a asp-action="Listar" asp-controller="Mantenedor" class="btn btn-outline-primary">Volver a la lista</a>        
     </div>
 </div>
 

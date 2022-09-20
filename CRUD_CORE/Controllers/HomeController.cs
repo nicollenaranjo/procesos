@@ -1,4 +1,5 @@
 ﻿using CRUD_CORE.Models;
+using CRUD_CORE.Datos;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
@@ -36,6 +37,12 @@ namespace CRUD_CORE.Controllers
         public IActionResult CerrarSesion()
         {
             return RedirectToAction("Login", "Accesos");
+        }
+
+        public IActionResult SinPermiso()
+        {
+            ViewBag.Message = "Usted no cuenta con el permiso para ver esta pagina";
+            return View();
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

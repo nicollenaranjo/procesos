@@ -4,6 +4,7 @@ using System.Data;
 using System.Web;
 using iTextSharp.text;
 using iTextSharp.text.pdf;
+using Azure;
 
 namespace CRUD_CORE.Datos
 {
@@ -29,7 +30,7 @@ namespace CRUD_CORE.Datos
                             Nombre = Convert.ToString(dr["Nombre"]),
                             Precio = Convert.ToInt32(dr["Precio"]),
                             DiaVenta = Convert.ToDateTime(dr["DiaVenta"])
-                    });
+                        });
                     }
                 }
             }
@@ -181,43 +182,47 @@ namespace CRUD_CORE.Datos
             }
             return rpta;
         }
-        public void btnGenerarPDF_Click( object sender, EventArgs e)
+        public void btnGenerarPDF_Click(object sender, EventArgs e)
         {
             DataTable dt = new DataTable();
             Document document = new Document();
             dt = dtVenta();
             if (dt.Rows.Count > 0)
+            {
                 document.Open();
-            Font fontTitle = FontFactory.GetFont(FontFactory.COURIER_BOLD, 25);
-            Font font9 = FontFactory.GetFont(FontFactory.TIMES, 9);
+                Font fontTitle = FontFactory.GetFont(FontFactory.COURIER_BOLD, 25);
+                Font font9 = FontFactory.GetFont(FontFactory.TIMES, 9);
 
-            PdfPTable table = new PdfPTable(dt.Columns.Count);
-            document.Add(new Paragraph(20, "Reporte del Ventas del Dia", fontTitle));
-            document.Add(new Chunk("\n"));
-            float[] widths = new float[dt.Columns.Count];
-            for (int i = 0; i < dt.Columns.Count; i++)
-                widths[i] = 4f;
+                PdfPTable table = new PdfPTable(dt.Columns.Count);
+                document.Add(new Paragraph(20, "Reporte del Ventas del Dia", fontTitle));
+                document.Add(new Chunk("\n"));
+                float[] widths = new float[dt.Columns.Count];
+                for (int i = 0; i < dt.Columns.Count; i++)
+                    widths[i] = 4f;
 
-            table.SetWidths(widths);
-            table.WidthPercentage = 90;
+                table.SetWidths(widths);
+                table.WidthPercentage = 90;
 
-            PdfPCell cell = new PdfPCell(new Phrase("columns"));
-            cell.Colspan = dt.Columns.Count;
+                PdfPCell cell = new PdfPCell(new Phrase("columns"));
+                cell.Colspan = dt.Columns.Count;
 
-            foreach (DataColumn c in dt.Columns) {
-                table.AddCell(new Phrase(c.ColumnName, font9));
-            }
-
-            foreach (DataRow r in dt.Rows) {
-                if (dt.Rows.Count > 0)
+                foreach (DataColumn c in dt.Columns)
                 {
-                    for (int h = 0; h < dt.Columns.Count; h++)
+                    table.AddCell(new Phrase(c.ColumnName, font9));
+                }
+
+                foreach (DataRow r in dt.Rows)
+                {
+                    if (dt.Rows.Count > 0)
                     {
-                        table.AddCell(new Phrase(r[h].ToString(), font9));
+                        for (int h = 0; h < dt.Columns.Count; h++)
+                        {
+                            table.AddCell(new Phrase(r[h].ToString(), font9));
+                        }
                     }
                 }
+                document.Add(table);
             }
-            document.Add(table);
             document.Close();
         }
     }

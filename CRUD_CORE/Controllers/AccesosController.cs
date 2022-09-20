@@ -2,13 +2,10 @@
 using CRUD_CORE.Models;
 using System.Data.SqlClient;
 using System.Data;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Collections;
 using System.Text;
 using System.Security.Cryptography;
+using Microsoft.AspNetCore.Http;
+
 
 
 
@@ -61,10 +58,11 @@ namespace CRUD_CORE.Controllers
 
                 using (SqlConnection cn = new SqlConnection(cadena))
                 {
-                    SqlCommand cmd = new SqlCommand("sp_RegistrarUsuario", cn);
+                    SqlCommand cmd = new SqlCommand("sp_RegistrarUsuario_3", cn);
                     cmd.Parameters.AddWithValue("Nombre", oUsuario.Nombre);
                     cmd.Parameters.AddWithValue("Correo", oUsuario.Correo);
                     cmd.Parameters.AddWithValue("Clave", oUsuario.Clave);
+                    cmd.Parameters.AddWithValue("idRol", 2);
                     cmd.Parameters.Add("Registrado", SqlDbType.Bit).Direction = ParameterDirection.Output;
                     cmd.Parameters.Add("Mensaje", SqlDbType.VarChar, 100).Direction = ParameterDirection.Output;
                     cmd.CommandType = CommandType.StoredProcedure;
@@ -102,16 +100,16 @@ namespace CRUD_CORE.Controllers
             {
                 using (SqlConnection cn = new SqlConnection(cadena))
                 {
-                    SqlCommand cmd = new SqlCommand("sp_ValidarUsuario_1", cn);
+                    SqlCommand cmd = new SqlCommand("sp_ValidarUsuario_3", cn);
                     cmd.Parameters.AddWithValue("Nombre", oUsuario.Nombre);
                     cmd.Parameters.AddWithValue("Clave", ConvertirClave(oUsuario.Clave));
                     cmd.CommandType = CommandType.StoredProcedure;
 
                     cn.Open();
-                    oUsuario.idUsuario = Convert.ToInt32(cmd.ExecuteScalar().ToString());
+                    oUsuario.idRol = (Roles)Convert.ToInt32(cmd.ExecuteScalar().ToString());
                 }
                 rpta = false;
-                if (oUsuario.idUsuario != 0)
+                if (oUsuario.idRol != 0)
                 {
                     
                     return RedirectToAction("Listar", "Mantenedor");
