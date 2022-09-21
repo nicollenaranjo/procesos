@@ -6,6 +6,7 @@ using Rotativa.AspNetCore;
 using Microsoft.AspNetCore.Authorization;
 using CRUD_CORE.Permisos;
 
+
 namespace CRUD_CORE.Controllers
 {
    // [Authorize]
@@ -18,7 +19,8 @@ namespace CRUD_CORE.Controllers
             var oLista = _VentaDatos.Listar();
             return View(oLista);
         }
-        [PermisosRol(Roles.Administrador)]
+        //[PermisosRol(Roles.Administrador)]
+       //[Authorize(Usuario.idRol = 1)]
         public IActionResult ListarDia() {
             var oLista = _VentaDatos.ListarDia();
             return View(oLista);

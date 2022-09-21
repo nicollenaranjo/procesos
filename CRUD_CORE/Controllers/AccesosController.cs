@@ -58,7 +58,7 @@ namespace CRUD_CORE.Controllers
 
                 using (SqlConnection cn = new SqlConnection(cadena))
                 {
-                    SqlCommand cmd = new SqlCommand("sp_RegistrarUsuario_3", cn);
+                    SqlCommand cmd = new SqlCommand("sp_RegistrarUsuario_5", cn);
                     cmd.Parameters.AddWithValue("Nombre", oUsuario.Nombre);
                     cmd.Parameters.AddWithValue("Correo", oUsuario.Correo);
                     cmd.Parameters.AddWithValue("Clave", oUsuario.Clave);
@@ -100,16 +100,16 @@ namespace CRUD_CORE.Controllers
             {
                 using (SqlConnection cn = new SqlConnection(cadena))
                 {
-                    SqlCommand cmd = new SqlCommand("sp_ValidarUsuario_3", cn);
+                    SqlCommand cmd = new SqlCommand("sp_ValidarUsuario_1", cn);
                     cmd.Parameters.AddWithValue("Nombre", oUsuario.Nombre);
                     cmd.Parameters.AddWithValue("Clave", ConvertirClave(oUsuario.Clave));
                     cmd.CommandType = CommandType.StoredProcedure;
 
                     cn.Open();
-                    oUsuario.idRol = (Roles)Convert.ToInt32(cmd.ExecuteScalar().ToString());
+                    oUsuario.idUsuario = Convert.ToInt32(cmd.ExecuteScalar().ToString());
                 }
                 rpta = false;
-                if (oUsuario.idRol != 0)
+                if (oUsuario.idUsuario != 0)
                 {
                     
                     return RedirectToAction("Listar", "Mantenedor");

@@ -6,6 +6,7 @@ namespace CRUD_CORE.Models
 {
     public class VentaModel
     {
+
         public int idVenta { get; set; }
         
         [Required(ErrorMessage ="El campo Nombre es obligatorio")]

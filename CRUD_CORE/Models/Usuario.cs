@@ -7,6 +7,7 @@ namespace CRUD_CORE.Models
 {
     public class Usuario
     {
+        public int idUsuario { get; set; }
         [Required(ErrorMessage = "El campo Id es obligatorio")]
         public int? Nombre { get; set; }
 
@@ -19,7 +20,7 @@ namespace CRUD_CORE.Models
         [Required(ErrorMessage = "El campo Confirmar contraseña es obligatorio")]
         public string? ConfirmarClave { get; set; }
 
-        public Roles idRol { get; set; }
+        public int? idRol { get; set; }
        
     }
     

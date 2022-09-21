@@ -15,10 +15,9 @@ namespace CRUD_CORE.Permisos
 
         public override void OnActionExecuting(ActionExecutingContext filterContext)
         {
-            Usuario usuario = new Usuario();
-            if (usuario.idRol != this.idrol) {
-                filterContext.Result = new RedirectResult("~/Home/SinPermiso");
-            }
+           // if (usuario.idRol != this.idrol) {
+                // filterContext.Result = new RedirectResult("~/Home/SinPermiso");
+           // }
         }
     }
 }
